@@ -33,4 +33,12 @@ RUN mkdir /ansible && \
 
 WORKDIR /ansible
 
+RUN adduser -u 1001 -G users -h /home/kpi -D kpi
+
+RUN echo "kpi ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER kpi
+
 CMD [ "ansible-playbook", "--version" ]
+
+
